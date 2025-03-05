@@ -1,0 +1,37 @@
+Entidades e Relacionamentos
+
+Cliente
+Atributos: cliente_id, nome, endereco, telefone
+Relacionamentos: Um cliente pode ter múltiplos veículos.
+
+Veículo
+Atributos: veiculo_id, modelo, placa, ano_fabricacao
+Relacionamentos: Cada veículo pertence a um único cliente e pode ter várias ordens de serviço.
+
+Ordem de Serviço (OS)
+Atributos: os_id, data_emissao, valor_total, status, data_conclusao
+Relacionamentos: Cada OS está associada a um único veículo, pode ter múltiplos serviços (mão de obra e peças), e é executada por uma equipe de mecânicos.
+
+Mecânico
+Atributos: mecanico_id, nome, endereco, especialidade
+Relacionamentos: Um mecânico pode estar associado a várias ordens de serviço (executando os serviços).
+
+Serviço
+Atributos: servico_id, descricao, valor
+Relacionamentos: Um serviço pertence a uma única OS e está relacionado a uma tabela de referência de mão de obra. Os serviços podem ser compostos por mão de obra ou peças.
+
+Peça
+Atributos: peca_id, descricao, valor
+Relacionamentos: Cada peça pode ser usada em várias ordens de serviço e pertence a uma OS.
+
+Tabela de Mão de Obra
+Atributos: servico_id, valor_hora, tempo_estimado
+Relacionamentos: A tabela de referência é usada para calcular o valor da mão de obra na OS.
+
+Relacionamentos
+Cliente - Veículo: Um cliente pode ter múltiplos veículos.
+Veículo - OS: Cada veículo pode ter várias ordens de serviço, e cada OS está associada a um único veículo.
+OS - Mecânico: Cada OS é executada por uma equipe de mecânicos.
+OS - Serviço: Cada OS possui serviços (mão de obra ou peças) que são executados para completar a ordem.
+Serviço - Tabela de Mão de Obra: O valor da mão de obra de cada serviço é calculado a partir de uma tabela de referência.
+OS - Peça: Peças podem ser associadas a uma OS para compor o valor final.
